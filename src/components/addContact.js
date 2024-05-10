@@ -1,15 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 
-function AddContact () {
+function AddContact ({ onCreate }) {
+    const[firstName, setFirstName] = useState('');
+    const[lastName, setLastName] = useState('');
+    const[number, setNumber] = useState('');
+
+    const handleNameChange = (event) => {
+        setFirstName(event.target.value);
+    }
+    
+    const handleChange = (event) => {
+        setLastName(event.target.value);
+    }
+
+    const handleNumberChange = (event) => {
+        setNumber(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onCreate({
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: number
+        });
+        setFirstName('');
+        setLastName('');
+        setNumber('');
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>First Name: </label>
-                <input placeholder="Enter first name"></input>
+                <input value={firstName} onChange={handleNameChange} placeholder="Enter first name"></input>
                 <label>Last Name: </label>
-                <input placeholder="Enter last name"></input>
+                <input value={lastName} onChange={handleChange} placeholder="Enter last name"></input>
                 <label>Phone Number: </label>
-                <input placeholder="Enter phone number"></input>
+                <input value={number} onChange={handleNumberChange} placeholder="Enter phone number"></input>
                 <button>Add Contact</button>
             </form>
         </div>
