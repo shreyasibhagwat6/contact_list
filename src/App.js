@@ -22,7 +22,6 @@ function App () {
       lastName: lastName,
       phoneNumber: phoneNumber
     });
-
     const newContact = [
       ...contact,
       response.data

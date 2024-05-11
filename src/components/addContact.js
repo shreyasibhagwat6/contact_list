@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function AddContact ({ onCreate }) {
     const[firstName, setFirstName] = useState('');
     const[lastName, setLastName] = useState('');
-    const[number, setNumber] = useState('');
+    const[phoneNumber, setPhoneNumber] = useState('');
 
     const handleNameChange = (event) => {
         setFirstName(event.target.value);
@@ -14,7 +14,7 @@ function AddContact ({ onCreate }) {
     }
 
     const handleNumberChange = (event) => {
-        setNumber(event.target.value);
+        setPhoneNumber(event.target.value);
     }
 
     const handleSubmit = (event) => {
@@ -22,11 +22,11 @@ function AddContact ({ onCreate }) {
         onCreate({
             firstName: firstName,
             lastName: lastName,
-            phoneNumber: number
+            phoneNumber: phoneNumber
         });
         setFirstName('');
         setLastName('');
-        setNumber('');
+        setPhoneNumber('');
     }
 
     return (
@@ -37,7 +37,7 @@ function AddContact ({ onCreate }) {
                 <label>Last Name: </label>
                 <input value={lastName} onChange={handleChange} placeholder="Enter last name"></input>
                 <label>Phone Number: </label>
-                <input value={number} onChange={handleNumberChange} placeholder="Enter phone number"></input>
+                <input value={phoneNumber} onChange={handleNumberChange} placeholder="Enter phone number"></input>
                 <button>Add Contact</button>
             </form>
         </div>
