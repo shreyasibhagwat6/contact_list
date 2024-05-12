@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ContactList from "./components/contactList";
-import AddContact from "./components/addContact";
+import ContactList from "./components/ContactList";
+import AddContact from "./components/AddContact";
 
 function App () {
-  const[contact, setContact] = useState('')
+  const[contact, setContact] = useState([])
 
   const getContact = async () => {
     const response = await axios.get('http://localhost:3001/')
@@ -26,15 +26,14 @@ function App () {
       ...contact,
       response.data
     ]
-    console.log(firstName)
     setContact(newContact);
-    
+    console.log(contact);
   }
 
   return (
   <div>
     <AddContact onCreate={createContact} />
-    <ContactList />
+    <ContactList contact={contact}/>
   </div>
  )
 }

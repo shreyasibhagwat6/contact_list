@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import Contact from "./Contact";
 
-function ContactList () {
-//     const [data, setData] = useState('');
+function ContactList ({ contact }) {
 
-//     const getData = async() => {
-//     const response = await axios.get('http://localhost:3001/');
-//     console.log(response.data)
-//     const names = response.data.map(name => (name.firstName));
-//     setData(names);
-// }
-
-// useEffect(()=>{
-//   getData()
-// }, []);
+  const renderedContacts = contact.map((contact)=> {
+    return(
+      <Contact contact={contact} />
+    )
+  })
 
 return (
   <div>
-    hello
+    {renderedContacts}
+    {console.log(typeof contact)}
   </div>
 )}
 
