@@ -24,6 +24,7 @@ function AddContact ({ onCreate }) {
             lastName: lastName,
             phoneNumber: phoneNumber
         });
+        console.log(typeof onCreate)
         setFirstName('');
         setLastName('');
         setPhoneNumber('');

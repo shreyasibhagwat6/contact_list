@@ -16,7 +16,7 @@ function App () {
     getContact();
   }, []);
   
-  const createContact = async (firstName, lastName, phoneNumber) => {
+  const createContact = async ({ firstName, lastName, phoneNumber }) => {
     const response = await axios.post('http://localhost:3001/', {
       firstName: firstName,
       lastName: lastName,
@@ -26,7 +26,7 @@ function App () {
       ...contact,
       response.data
     ]
-
+    console.log(firstName)
     setContact(newContact);
     
   }
