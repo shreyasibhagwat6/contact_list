@@ -27,13 +27,23 @@ function App () {
       response.data
     ]
     setContact(newContact);
-    console.log(contact);
+    
+  }
+
+  const deleteContact = async (id) => {
+    const response = await axios.delete(`http://localhost:3001/${id}`);
+
+    const updatedContact = contact.filter((contact)=> {
+      return contact.id !== id
+    })
+    
+    setContact(updatedContact);
   }
 
   return (
   <div>
     <AddContact onCreate={createContact} />
-    <ContactList contact={contact}/>
+    <ContactList contact={contact} onDelete={deleteContact}/>
   </div>
  )
 }
