@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Contact from "./Contact";
 
-function ContactList ({ contact, onDelete }) {
+function ContactList ({ contact, onDelete, onEdit }) {
 
   const renderedContacts = contact.map((contact)=> {
     return(
-      <Contact contact={contact} onDelete={onDelete}/>
+      <Contact contact={contact} onDelete={onDelete} onEdit={onEdit}/>
     )
   })
 

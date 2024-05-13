@@ -22,6 +22,7 @@ function App () {
       lastName: lastName,
       phoneNumber: phoneNumber
     });
+    
     const newContact = [
       ...contact,
       response.data
@@ -40,10 +41,16 @@ function App () {
     setContact(updatedContact);
   }
 
+  const editContact = async (id) => {
+    const response = await axios.put(`http://localhost:3001/${id}`)
+
+    console.log(response.data.id)
+  }
+
   return (
   <div>
     <AddContact onCreate={createContact} />
-    <ContactList contact={contact} onDelete={deleteContact}/>
+    <ContactList contact={contact} onDelete={deleteContact} onEdit={editContact}/>
   </div>
  )
 }
