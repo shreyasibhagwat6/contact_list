@@ -9,10 +9,11 @@ function ContactList ({ contact, onDelete, onEdit }) {
     )
   })
 
+  console.log(contact)
+
 return (
   <div>
     {renderedContacts}
-    {console.log(typeof contact)}
   </div>
 )}
 

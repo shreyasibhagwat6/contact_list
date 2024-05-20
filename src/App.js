@@ -41,10 +41,22 @@ function App () {
     setContact(updatedContact);
   }
 
-  const editContact = async (id) => {
-    const response = await axios.put(`http://localhost:3001/${id}`)
+  const editContact = async ({ id, newContact }) => {
+    const response = await axios.put(`http://localhost:3001/${id}`,
+      {
+        firstName: newContact.firstName,
+        lastName: newContact.lastName,
+        phoneNumber: newContact.phoneNumber
+      });
 
-    console.log(response.data.id)
+      const updatedContact = contact.map((contact) => {
+        if (contact.id === id) {
+          return {...contact, ...response.data}
+        }
+        return contact;
+      })
+
+      setContact(updatedContact);
   }
 
   return (
