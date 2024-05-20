@@ -13,37 +13,31 @@ function Contact ({ contact, onDelete, onEdit }) {
         setShowEdit(!showEdit)
     }
 
-    console.log(typeof contact)
+    console.log(contact)
 
-    // const contactList = contact.map ((contact)=> {
-    //     return (
-    //         <div>
-    //             <h4>{contact.firstName}</h4>
-    //         </div>
-    //     )
-    // })
-
-    let contentFirstName = <h4>{contact.firstName}</h4>
-    let contentLastName = <h4>{contact.lastName}</h4>
-    let contentPhoneNumber = <h4>{contact.phoneNumber}</h4>
+    let content = (
+        <div>
+            <h4>{contact.firstName}</h4>
+            <h4>{contact.lastName}</h4>
+            <h4>{contact.phoneNumber}</h4>
+        </div>
+    )
 
     if(showEdit) {
-        contentFirstName = <EditContact contact={contact}/>
-        contentLastName = <EditContact contact={contact}/>
-        contentPhoneNumber = <EditContact contact={contact}/>
+        content = <EditContact contact={contact}/>
     }
-
     
 
     return(
         <div>
             <div>
-                {contact.id}
+                {/* {contact.id}
                 {contentFirstName}
-                {contentLastName}
+                {contentLastName} */}
+                {content}
             </div>
             <div>
-                {contentPhoneNumber}
+                {/* {contentPhoneNumber} */}
             </div>
             <button onClick={handleEditClick}>Edit</button>
             <button onClick={handleDeleteClick}>Delete</button>
