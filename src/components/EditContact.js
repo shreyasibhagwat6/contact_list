@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 
-function EditContact ({ contact, onSubmit }) {
+function EditContact ({ contact, onSubmit, onEdit }) {
 
     const[firstName, setFirstName] = useState('');
     const[lastName, setLastName] = useState('');
     const[phoneNumber, setPhoneNumber] = useState('');
-
-
 
     const handleNameChange = (event) => {
         setFirstName(event.target.value);
@@ -20,25 +18,18 @@ function EditContact ({ contact, onSubmit }) {
         setPhoneNumber(event.target.value);
     }
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault.default();
-    //     onSumbit({
-    //         firstName: firstName,
-    //         lastName: lastName,
-    //         phoneNumber: phoneNumber 
-    // })
-    //     setFirstName('');
-    //     setLastName('');
-    //     setPhoneNumber('');
-    // }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onEdit(contact.id, firstName, lastName, phoneNumber);
+    }
 
     console.log(contact)
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>First Name</label>
-                <input value={contact.firstName} onChange={handleNameChange}></input>
+                <input onChange={handleNameChange}></input>
                 <label>Last Name</label>
                 <input value={contact.lastName} onChange={handleChange}></input>
                 <label>Phone Number</label>

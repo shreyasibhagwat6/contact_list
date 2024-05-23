@@ -8,7 +8,7 @@ function Contact ({ contact, onDelete, onEdit }) {
         onDelete(contact.id)
     }
 
-    const handleEditClick = () => {
+    const handleEditClick = (id) => {
         onEdit(contact.id)
         setShowEdit(!showEdit)
     }
@@ -24,20 +24,14 @@ function Contact ({ contact, onDelete, onEdit }) {
     )
 
     if(showEdit) {
-        content = <EditContact contact={contact}/>
+        content = <EditContact contact={contact} onEdit={onEdit}/>
     }
     
 
     return(
         <div>
             <div>
-                {/* {contact.id}
-                {contentFirstName}
-                {contentLastName} */}
                 {content}
-            </div>
-            <div>
-                {/* {contentPhoneNumber} */}
             </div>
             <button onClick={handleEditClick}>Edit</button>
             <button onClick={handleDeleteClick}>Delete</button>
