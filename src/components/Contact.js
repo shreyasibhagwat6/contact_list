@@ -8,9 +8,15 @@ function Contact ({ contact, onDelete, onEdit }) {
         onDelete(contact.id)
     }
 
-    const handleEditClick = (id) => {
-        onEdit(contact.id)
+    const handleEditClick = () => {
         setShowEdit(!showEdit)
+    }
+
+    const handleSubmit = (id, firstName, lastName, phoneNumber) => {
+        setShowEdit(false)
+        console.log(id)
+        console.log(firstName)
+        onEdit(id, firstName, lastName, phoneNumber)
     }
 
     console.log(contact)
@@ -24,7 +30,7 @@ function Contact ({ contact, onDelete, onEdit }) {
     )
 
     if(showEdit) {
-        content = <EditContact contact={contact} onEdit={onEdit}/>
+        content = <EditContact contact={contact} onEdit={onEdit} onSubmit={handleSubmit}/>
     }
     
 

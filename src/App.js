@@ -41,10 +41,16 @@ function App () {
     setContact(updatedContact);
   }
 
-  const editContact = async ({ id, newContact }) => {
+  const editContact = async (id, firstName, lastName, phoneNumber) => {
+    
+    console.log(id)
+    console.log(firstName)
+
     const response = await axios.put(`http://localhost:3001/${id}`,
       {
-        contact: newContact,
+        firstName,
+        lastName,
+        phoneNumber
       });
 
       const updatedContact = contact.map((contact) => {
@@ -53,6 +59,8 @@ function App () {
         }
         return contact;
       })
+
+      console.log(updatedContact)
 
       setContact(updatedContact);
   }

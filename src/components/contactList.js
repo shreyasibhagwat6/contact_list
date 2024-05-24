@@ -5,7 +5,7 @@ function ContactList ({ contact, onDelete, onEdit }) {
 
   const renderedContacts = contact.map((contact)=> {
     return(
-      <Contact contact={contact} onDelete={onDelete} onEdit={onEdit}/>
+      <Contact key={contact.id} contact={contact} onDelete={onDelete} onEdit={onEdit}/>
     )
   })
 
