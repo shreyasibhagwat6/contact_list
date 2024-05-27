@@ -5,6 +5,7 @@ function EditContact ({ contact, onSubmit }) {
     const[firstName, setFirstName] = useState(contact.firstName);
     const[lastName, setLastName] = useState(contact.lastName);
     const[phoneNumber, setPhoneNumber] = useState(contact.phoneNumber);
+    const[address, setAddress] = useState(contact.address);
 
     const handleNameChange = (event) => {
         setFirstName(event.target.value);
@@ -18,10 +19,14 @@ function EditContact ({ contact, onSubmit }) {
         setPhoneNumber(event.target.value);
     }
 
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value);
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(contact.id)
-        onSubmit(contact.id, firstName, lastName, phoneNumber)
+        onSubmit(contact.id, firstName, lastName, phoneNumber, address)
     }
 
     return (
@@ -33,6 +38,8 @@ function EditContact ({ contact, onSubmit }) {
                 <input value={lastName} onChange={handleChange}></input>
                 <label>Phone Number</label>
                 <input value={phoneNumber} onChange={handleNumberChange}></input>
+                <label>Address</label>
+                <input value={address} onChange={handleAddressChange}></input>
                 <button>Save</button>
             </form>
         </div>

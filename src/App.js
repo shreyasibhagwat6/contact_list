@@ -16,11 +16,12 @@ function App () {
     getContact();
   }, []);
   
-  const createContact = async ({ firstName, lastName, phoneNumber }) => {
+  const createContact = async ({ firstName, lastName, phoneNumber, address }) => {
     const response = await axios.post('http://localhost:3001/', {
       firstName: firstName,
       lastName: lastName,
-      phoneNumber: phoneNumber
+      phoneNumber: phoneNumber,
+      address: address
     });
     
     const newContact = [
@@ -41,7 +42,7 @@ function App () {
     setContact(updatedContact);
   }
 
-  const editContact = async (id, firstName, lastName, phoneNumber) => {
+  const editContact = async (id, firstName, lastName, phoneNumber, address) => {
     
     console.log(id)
     console.log(firstName)
@@ -50,7 +51,8 @@ function App () {
       {
         firstName,
         lastName,
-        phoneNumber
+        phoneNumber,
+        address
       });
 
       const updatedContact = contact.map((contact) => {

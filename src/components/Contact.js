@@ -12,11 +12,11 @@ function Contact ({ contact, onDelete, onEdit }) {
         setShowEdit(!showEdit)
     }
 
-    const handleSubmit = (id, firstName, lastName, phoneNumber) => {
+    const handleSubmit = (id, firstName, lastName, phoneNumber, address) => {
         setShowEdit(false)
         console.log(id)
         console.log(firstName)
-        onEdit(id, firstName, lastName, phoneNumber)
+        onEdit(id, firstName, lastName, phoneNumber, address)
     }
 
     console.log(contact)
@@ -26,6 +26,7 @@ function Contact ({ contact, onDelete, onEdit }) {
             <h4>{contact.firstName}</h4>
             <h4>{contact.lastName}</h4>
             <h4>{contact.phoneNumber}</h4>
+            <h3>{contact.address}</h3>
         </div>
     )
 

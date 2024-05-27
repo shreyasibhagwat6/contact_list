@@ -4,6 +4,7 @@ function AddContact ({ onCreate }) {
     const[firstName, setFirstName] = useState('');
     const[lastName, setLastName] = useState('');
     const[phoneNumber, setPhoneNumber] = useState('');
+    const[address, setAddress] = useState('');
 
     const handleNameChange = (event) => {
         setFirstName(event.target.value);
@@ -17,17 +18,23 @@ function AddContact ({ onCreate }) {
         setPhoneNumber(event.target.value);
     }
 
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value);
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
         onCreate({
             firstName: firstName,
             lastName: lastName,
-            phoneNumber: phoneNumber
+            phoneNumber: phoneNumber,
+            address: address
         });
        
         setFirstName('');
         setLastName('');
         setPhoneNumber('');
+        setAddress('');
     }
 
     return (
@@ -39,6 +46,8 @@ function AddContact ({ onCreate }) {
                 <input value={lastName} onChange={handleChange} placeholder="Enter last name"></input>
                 <label>Phone Number: </label>
                 <input value={phoneNumber} onChange={handleNumberChange} placeholder="Enter phone number"></input>
+                <label>Address: </label>
+                <input value={address} onChange={handleAddressChange} placeholder="Enter address"></input>
                 <button>Add Contact</button>
             </form>
         </div>
